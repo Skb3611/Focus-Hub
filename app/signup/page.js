@@ -62,7 +62,7 @@ const page = () => {
   return (
     <div>
       <div className='flex justify-center items-center w-full h-[80vh]'>
-        <div className="w-full max-w-md  bg-white p-8 rounded-lg shadow-md">
+        <div className="w-[90%] lg:w-full max-w-md  bg-white px-8 py-3 lg:p-8 rounded-lg shadow-md">
           <h2 className="text-2xl font-bold mb-6 text-center">Sign Up</h2>
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="mb-4">

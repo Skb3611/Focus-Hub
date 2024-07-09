@@ -49,8 +49,8 @@ const page = () => {
   }
 
   return (
-    <div className='flex justify-center items-center w-full h-[80vh]'>
-      <div className="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+    <div className='flex justify-center items-center w-full h-[78vh] lg:h-[80vh]'>
+      <div className="w-[90%] lg:w-full max-w-md bg-white p-8 rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <form onSubmit={(e) => handleSubmit(e)}>
           <div className="mb-4">

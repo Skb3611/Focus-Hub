@@ -56,19 +56,19 @@ const handleclick=() => {
         <div className='relative' id='courses'>
             <div className="absolute inset-0 -z-10 h-full w-full bg-white bg-[linear-gradient(to_right,#f0f0f0_1px,transparent_1px),linear-gradient(to_bottom,#f0f0f0_1px,transparent_1px)] bg-[size:6rem_4rem]"><div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,#C9EBFF,transparent)]"></div></div>
             <section className="text-gray-600 body-font">
-                <div className="container px-5 py-24 mx-auto">
-                    <div className="flex flex-col justify-center items-center w-full mb-20">
+                <div className="container px-5 py-8 lg:py-24 mx-auto">
+                    <div className="flex flex-col justify-center items-center w-full mb-5 lg:mb-20">
                         <div className="lg:w-1/2 w-full mb-6 lg:mb-0">
-                            <h1 className="sm:text-3xl lg:text-4xl text-2xl font-medium title-font mb-2 text-gray-900 text-center">Book a Study Session</h1>
+                            <h1 className="sm:text-3xl lg:text-4xl text-2xl font-medium title-font mb-0 lg:mb-2 text-gray-900 text-center">Book a Study Session</h1>
                         </div>
                         <p className="lg:w-1/2 w-full leading-relaxed text-gray-500 text-lg text-center">Choose the course you want to pursue or pursing to fill the form.</p>
                     </div>
-                    <div className="flex flex-wrap -m-4">
+                    <div className="flex flex-wrap items-center justify-center -m-4">
                         {data.map((item) => {
                             return (
                                 <div key={item.title} className="xl:w-1/4 md:w-1/2 p-4">
                                     <div className="bg-gray-100 p-6 rounded-lg">
-                                        <img className="h-40 rounded w-full object-cover object-center mb-6" src={item.imageURL} alt="content" />
+                                        <img className="h-40     rounded w-full object-cover object-center mb-6" src={item.imageURL} alt="content" />
                                         <h2 className="text-lg text-gray-900 font-medium title-font mb-4">{item.title}</h2>
                                         <p className="leading-relaxed text-base">{item.dsc}</p>
                                         <div className='flex justify-center mt-5'>

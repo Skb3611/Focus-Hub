@@ -50,7 +50,7 @@ const EnquiryForm = () => {
     };
 
     return (
-        <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md h-full my-10">
+        <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md h-full lg:my-10">
             <h2 className="text-2xl font-bold mb-4">Book a Study Session</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
@@ -88,7 +88,7 @@ const EnquiryForm = () => {
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Category</label>
-                    <select onChange={handleChange} name="time" id="time" className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"  value={formData.category}>
+                    <select  onChange={handleChange} name="time" id="time" className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" defaultValue={formData.time}>
                     <option value="default">Select a Option</option>
                     <option value="Competitive Exams">Competitive Exams</option>
                     <option value="Defence Exams">Defence Exams</option>
@@ -110,7 +110,7 @@ const EnquiryForm = () => {
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Time</label>
-                    <select onChange={handleChange} name="category" id="time" className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"  value={formData.time}>
+                    <select onChange={handleChange} name="category" id="category" className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"  defaultValue={formData.time}>
                     <option value="default">Select a Option</option>
                     <option value="6 Am - 8Pm">6 Am - 8Pm</option>
                     <option value="8 Am - 10Pm">8 Am - 10Pm</option>
