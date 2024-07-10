@@ -1,7 +1,7 @@
 "use client"
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-
+import { EnquiryApi } from '../api/ApiRoutes';
 const EnquiryForm = () => {
     const [formData, setFormData] = useState({
         name: '',
@@ -20,7 +20,7 @@ const EnquiryForm = () => {
         draggable: true,
         progress: undefined,
         theme: "dark",
-      };
+    };
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -29,14 +29,22 @@ const EnquiryForm = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         for (const key in formData) {
-           if(formData[key]==""|| formData[key]=="default")
-            return toast.error("Fields cannot be empty",toastoptions)
+            if (formData[key] == "" || formData[key] == "default")
+                return toast.error("Fields cannot be empty", toastoptions)
         }
-     
-        toast.success("Session booked",toastoptions)
+        let res = await fetch(EnquiryApi, {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: {
+                "Content-Type": "application/json",
+              }
+        })
+        res= await res.json()
+        if(res.status)toast.success("Session booked. Check your Mail", toastoptions)
+            if(!res.status)toast.error("Some error occured")
         // Handle form submission logic
         setFormData({
             name: '',
@@ -46,7 +54,7 @@ const EnquiryForm = () => {
             time: 'default',
             category: 'default',
         })
-        
+
     };
 
     return (
@@ -88,14 +96,14 @@ const EnquiryForm = () => {
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Category</label>
-                    <select  onChange={handleChange} name="time" id="time" className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" defaultValue={formData.time}>
-                    <option value="default">Select a Option</option>
-                    <option value="Competitive Exams">Competitive Exams</option>
-                    <option value="Defence Exams">Defence Exams</option>
-                    <option value="SSC">SSC</option>
-                    <option value="HSC">HSC</option>
+                    <select onChange={handleChange} name="time" id="time" className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" defaultValue={formData.time}>
+                        <option value="default">Select a Option</option>
+                        <option value="Competitive Exams">Competitive Exams</option>
+                        <option value="Defence Exams">Defence Exams</option>
+                        <option value="SSC">SSC</option>
+                        <option value="HSC">HSC</option>
                     </select>
-                        
+
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Date</label>
@@ -110,24 +118,24 @@ const EnquiryForm = () => {
                 </div>
                 <div>
                     <label className="block text-sm font-medium text-gray-700">Time</label>
-                    <select onChange={handleChange} name="category" id="category" className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"  defaultValue={formData.time}>
-                    <option value="default">Select a Option</option>
-                    <option value="6 Am - 8Pm">6 Am - 8Pm</option>
-                    <option value="8 Am - 10Pm">8 Am - 10Pm</option>
-                    <option value="10 Am - 12Pm">10 Am - 12Pm</option>
-                    <option value="12 Pm - 2Pm">12 Pm - 2Pm</option>
-                    <option value="4 Pm - 6Pm">4 Pm - 6Pm</option>
-                    <option value="6 Pm - 8Pm">6 Pm - 8Pm</option>
+                    <select onChange={handleChange} name="category" id="category" className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" defaultValue={formData.time}>
+                        <option value="default">Select a Option</option>
+                        <option value="6 Am - 8Pm">6 Am - 8Pm</option>
+                        <option value="8 Am - 10Pm">8 Am - 10Pm</option>
+                        <option value="10 Am - 12Pm">10 Am - 12Pm</option>
+                        <option value="12 Pm - 2Pm">12 Pm - 2Pm</option>
+                        <option value="4 Pm - 6Pm">4 Pm - 6Pm</option>
+                        <option value="6 Pm - 8Pm">6 Pm - 8Pm</option>
                     </select>
-                        
+
                 </div>
-              
-                
+
+
                 <div>
                     <button
                         type="button"
                         className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                    onClick={handleSubmit}>
+                        onClick={handleSubmit}>
                         Submit
                     </button>
                 </div>

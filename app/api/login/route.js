@@ -10,7 +10,7 @@ export async function POST(request) {
         await connectToDatabase()
         let { email, password } = await request.json()
         let User = await user.findOne({ email })
-        if (!User) return NextResponse.json({ success: false, message: "Invalid credentials" })
+        if (!User) return NextResponse.json({ success: false, message: "No user found" })
         else {
             let bool = await bycrypt.compare(password, User.password)
             if (!bool)

@@ -19,7 +19,7 @@ const Slot = () => {
     let data = [
         {
             title: "Competitive Exams",
-            imageURL: "https://d13loartjoc1yn.cloudfront.net/article/1684235551_Competitive%20Exams.jpg",
+            imageURL: "https://www.educationquill.com/wp-content/uploads/2023/02/Apti.jpg",
             dsc: "JEE Main, JEE Advanced , NEET , CET , NATA etc. exam preparations"
         },
         {
@@ -34,7 +34,7 @@ const Slot = () => {
         },
         {
             title: "HSC",
-            imageURL: "https://cdn-res.keymedia.com/cms/images/au/130/0314_637232847506093449.jpg",
+            imageURL: "https://www.pacific.edu/sites/default/files/styles/two_column_image/public/2023-09/RS104731_Westgate%20Center%20Rooms-3-web.jpg?itok=vXJVta-S",
             dsc: "Exam preparation for HSC & 11th , 12th exams "
         },
     ]

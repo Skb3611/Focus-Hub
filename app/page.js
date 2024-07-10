@@ -7,8 +7,8 @@ export default function Home() {
   return (
    <div className="scroll-smooth ">
    <Slider/>
-   <Slot/>
    <About/>
+   <Slot/>
    </div>
   );
 }
