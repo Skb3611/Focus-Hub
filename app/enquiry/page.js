@@ -43,8 +43,8 @@ const EnquiryForm = () => {
               }
         })
         res= await res.json()
-        if(res.status)toast.success("Session booked. Check your Mail", toastoptions)
-            if(!res.status)toast.error("Some error occured")
+        if(res)toast.success("Session booked. Check your Mail", toastoptions)
+            // if(!res.status)toast.error("Some error occured")
         // Handle form submission logic
         setFormData({
             name: '',
