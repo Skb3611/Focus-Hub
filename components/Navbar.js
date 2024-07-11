@@ -5,7 +5,8 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useSelector, useDispatch } from 'react-redux'
-import { SetUser } from '@/app/features/userslice'
+import { SetUser,RemoveUser } from '@/app/features/userslice'
+
 import jwt from "jsonwebtoken"
 import { toast } from 'react-toastify'
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -30,13 +31,24 @@ const Navbar = () => {
     theme: "dark",
   };
   const IsUser = useSelector((state) => state.user.value)
+
   const dispatch = useDispatch()
   const router = useRouter()
+  var decoded;
+  useEffect(() => {
+    let token= JSON.parse(localStorage.getItem("token"))
+    if(token){
+      dispatch(SetUser())
+      decoded =jwt.decode(token)
+    }
+  }, [])
   if (IsUser) {
     let token = JSON.parse(localStorage.getItem("token"))
-    var decoded = jwt.decode(token)
+   decoded = jwt.decode(token)
 
   }
+ 
+  
   return (
     <>
       <header className="text-gray-600 bg-white shadow-xl body-font sticky z-10 w-full top-0 ">
@@ -60,7 +72,7 @@ const Navbar = () => {
             {!IsUser ? <> <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center w-1/3 " onClick={() => {handletoggle();router.push('/signup')}} >Sign Up</button>
               <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center w-1/3 " onClick={() => {handletoggle();router.push('/login')}} >Login</button>
             </> :
-            <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center w-1/2" onClick={() => { dispatch(SetUser()); localStorage.clear(); toast.success("Logged Out", toastoptions);handletoggle() }} >Logout</button>
+            <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center w-1/2" onClick={() => { dispatch(RemoveUser()); localStorage.clear(); toast.success("Logged Out", toastoptions);handletoggle() }} >Logout</button>
             }
           </div>
           </div>}
@@ -72,11 +84,11 @@ const Navbar = () => {
             <Link href={"/team"} className=" hover:text-black hover:underline hover:scale-105 transition-all">Developers</Link>
           </nav>
           <div className="hidden buttons lg:flex gap-2">
-            {!IsUser ? <> <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center" onClick={() => router.push('/signup')} >Sign Up</button>
-              <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center" onClick={() => router.push('/login')} >Login</button>
+            {!IsUser ? <> <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center" onClick={() =>{ router.push('/signup')}} >Sign Up</button>
+              <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center" onClick={() =>{ router.push('/login')}} >Login</button>
             </> : <>
               <span className='text-lg m-auto font-semibold'>Hi {decoded.username}</span>
-              <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center" onClick={() => { dispatch(SetUser()); localStorage.clear(); toast.success("Logged Out", toastoptions) }} >Logout</button>
+              <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center" onClick={() => { dispatch(RemoveUser()); localStorage.clear(); toast.success("Logged Out", toastoptions) }} >Logout</button>
             </>
             }
           </div>

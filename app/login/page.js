@@ -4,12 +4,14 @@ import Link from 'next/link'
 import { toast } from 'react-toastify';
 import { LoginApi } from '../api/ApiRoutes';
 import { useRouter } from 'next/navigation';
-import { useSelector, useDispatch } from 'react-redux'
+
 import { SetUser } from '../features/userslice';
+import { useDispatch } from 'react-redux';
+
 
 const page = () => {
+let dispatch =useDispatch()
 
-    const dispatch = useDispatch()
   const router=useRouter()
   let toastoptions = {
     position: "top-right",
