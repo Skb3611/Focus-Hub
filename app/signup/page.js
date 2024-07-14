@@ -11,6 +11,10 @@ import { SetUser } from '@/app/features/userslice'
 const page = () => {
   const router = useRouter()
   const dispatch = useDispatch()
+  useEffect( () => {
+    let token= localStorage.getItem("token")
+    if(token) router.push("/")
+  }, [])
   let toastoptions = {
     position: "top-right",
     autoClose: 1000,

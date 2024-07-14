@@ -86,7 +86,7 @@ const page = () => {
                                             </div>
                                             <div className="flex-grow text-center lg:text-left">
                                                 <h2 className="text-gray-900 text-xl title-font font-medium mb-1">Email</h2>
-                                                <p className="leading-relaxed text-lg">focushub@gmail.com</p>
+                                                <p className="leading-relaxed text-lg">info.focus.hub@gmail.com</p>
 
                                             </div>
                                         </div>

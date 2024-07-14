@@ -1,8 +1,12 @@
 import nodemailer from 'nodemailer';
 import { NextResponse } from 'next/server';
-
+import enquiry from '@/models/enquiry';
+import connectToDatabase from '@/lib/connection';
+import Enquiry from '@/template/Enquiry'
+import { render } from '@react-email/components';
 export async function POST(request) {
   try {
+    await connectToDatabase()
     let body = await request.json();
     var transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -14,31 +18,18 @@ export async function POST(request) {
         rejectUnauthorized: false
       }
     });
-
+const EmailHtml= render(<Enquiry body={body} />)
     var mailOptions = {
       from: process.env.EMAIL,
       to: body.email,
       subject: 'Confirmation of Your Session Booking',
-      text: `
-        Dear ${body.name},
-
-        Thank you for booking a session with us. We are pleased to confirm your appointment as follows:
-
-        Date: ${body.date}
-        Time: ${body.time}
-        Category: ${body.category}
-
-        If you have any questions or need to make any changes to your booking, please do not hesitate to contact us.
-
-        We look forward to seeing you soon.
-
-        Best regards,
-        Focus Hub
-        https://focus-hub-xi.vercel.app/`
-    };
+      html: EmailHtml
+    }
 
     let info = await transporter.sendMail(mailOptions);
+
     console.log('Email sent: ' + info.response);
+    await enquiry.create(body)
     return NextResponse.json({ success: true });
 
   } catch (error) {

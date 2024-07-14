@@ -1,47 +1,66 @@
 import React from 'react'
-import { FaRegLightbulb } from "react-icons/fa";
-import { FaQuestion } from "react-icons/fa6";
-import { GiDart } from "react-icons/gi";
-import { SiWelcometothejungle } from "react-icons/si";
-import { MdOutlineLocalOffer } from "react-icons/md";
+import { FaGraduationCap, FaScroll, FaBook, FaLightbulb, FaUsers, FaHandshake, FaTrophy, FaCommentDots, FaPhone } from 'react-icons/fa';
+
 const page = () => {
   let data = [
     {
       title: "Welcome to Focus Hub!",
       desc: "At Focus Hub, we believe that education is the foundation for a brighter future. Our mission is to provide a dynamic and supportive learning environment that fosters academic excellence, personal growth, and professional development.",
-      icon: <SiWelcometothejungle className='md:text-5xl text-6xl' />,
+      icon: <FaGraduationCap className="text-6xl" />,
       position: "left"
-
     },
     {
-      title: "Our Vision",
-      desc: "To be a leading institution in providing comprehensive and innovative educational programs that empower students to achieve their full potential and make significant contributions to society.",
-      icon: <FaRegLightbulb className='md:text-5xl text-6xl' />,
+      title: "Mission Statement",
+      desc: "Our mission is to deliver comprehensive and innovative educational programs that empower students to achieve their full potential and make significant contributions to society. We are dedicated to creating lifelong learners and leaders who can adapt to the ever-changing demands of the modern world.",
+      icon: <FaScroll className="text-6xl" />,
       position: "right"
-
     },
     {
-      title: "Our Mission",
-      desc: "Quality Education: Deliver top-notch academic programs and support services tailored to meet the diverse needs of our students.Student-Centered Approach: Focus on individual student success through personalized learning experiences and mentorship",
-      icon: <GiDart className='md:text-5xl text-6xl' />,
+      title: "History",
+      desc: "Focus Hub was founded by a group of passionate educators and industry experts who recognized the need for a holistic approach to education. Over the years, we have grown into a reputable institution known for our commitment to student success and our innovative teaching methodologies. Our journey began with a small team and a big vision, and today, we are proud to have made a significant impact on the lives of countless students.",
+      icon: <FaBook className="text-6xl" />,
       position: "left"
-
     },
     {
-      title: "What We Offer",
-      desc: "Support Services: Academic advising, tutoring, career counseling, and personal development workshops to support student success.",
-      icon: <MdOutlineLocalOffer className='md:text-5xl text-6xl' />,
+      title: "Values and Principles",
+      desc: "Excellence: We strive for the highest standards in all our educational programs and continuously seek to improve our offerings. Innovation: We embrace new teaching methodologies and technologies to enhance the learning experience. Support: We provide a nurturing and supportive environment that encourages personal and academic growth. Integrity: We maintain transparency, honesty, and ethical practices in all our operations. Community: We foster a sense of belonging and collaboration among our students, staff, and the broader community.",
+      icon: <FaLightbulb className="text-6xl" />,
       position: "right"
-
     },
     {
-      title: "Why Choose Us?",
-      desc: "Career Development: Our programs are designed to equip students with the skills and knowledge needed for successful careers.",
-      icon: <FaQuestion className='md:text-5xl text-6xl' />,
+      title: "Team",
+      desc: "Our team comprises experienced educators, passionate administrators, and dedicated support staff, all working together to ensure the best learning experience for our students. Our faculty members are experts in their respective fields and are committed to providing high-quality education. Our administrative team ensures that the institution runs smoothly and that students have the resources they need to succeed.",
+      icon: <FaUsers className="text-6xl" />,
       position: "left"
-
     },
+    {
+      title: "Company Culture",
+      desc: "At Focus Hub, we foster a collaborative and inclusive culture where every member is encouraged to contribute and grow. We value diversity, creativity, and the pursuit of knowledge. Our culture is built on mutual respect, open communication, and a shared commitment to excellence.",
+      icon: <FaHandshake className="text-6xl" />,
+      position: "right"
+    },
+    {
+      title: "Achievements and Awards",
+      desc: "Best Educational Institution Award 2022: Recognized for our outstanding contributions to education. Innovative Teaching Award 2021: Awarded for our cutting-edge teaching methodologies. Student Success Award 2020: Honored for our exceptional student support services.",
+      icon: <FaTrophy className="text-6xl" />,
+      position: "left"
+    },
+    {
+      title: "Customer Testimonials",
+      desc: "Sarah Johnson: Focus Hub has transformed my learning experience. The supportive environment and dedicated teachers have helped me excel in my studies. David Lee: Thanks to Focus Hub, I was able to achieve my academic goals and secure a place in my dream college. Emily Davis: Focus Hub's innovative programs have prepared me for a successful career. I am grateful for the opportunities and support I've received.",
+      icon: <FaCommentDots className="text-6xl" />,
+      position: "right"
+    },
+    {
+      title: "Contact Information",
+      desc: <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center" >Visit Contact Us</button>,
+      icon: <FaPhone className="text-6xl" />,
+      position: "left"
+    },
+
   ]
+  
+  
   return (
     <div>
       <section className="text-gray-600 body-font h-[78vh] sm:h-[80vh] overflow-auto example">

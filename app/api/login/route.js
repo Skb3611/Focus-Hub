@@ -16,7 +16,7 @@ export async function POST(request) {
             if (!bool)
                 return NextResponse.json({ success: false, message: "Invalid credentials" })
             else{
-                let token= jwt.sign({username:User.username,email:User.email},process.env.SECRET,{expiresIn:"2h"})
+                let token= jwt.sign({username:User.username,email:User.email},process.env.SECRET)
                 return NextResponse.json({success:true,token:token,message:"Logged In successfully"},{status:200})
             }
         }

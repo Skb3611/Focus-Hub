@@ -11,8 +11,12 @@ import { useDispatch } from 'react-redux';
 
 const page = () => {
 let dispatch =useDispatch()
+const router=useRouter()
+useEffect( () => {
+  let token= localStorage.getItem("token")
+  if(token) router.push("/")
+}, [])
 
-  const router=useRouter()
   let toastoptions = {
     position: "top-right",
     autoClose: 1000,

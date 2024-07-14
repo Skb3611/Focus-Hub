@@ -2,7 +2,9 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { EnquiryApi } from '../api/ApiRoutes';
+import { useRouter } from 'next/navigation';
 const EnquiryForm = () => {
+    const router=useRouter()
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -44,7 +46,7 @@ const EnquiryForm = () => {
         })
         res= await res.json()
         if(res)toast.success("Session booked. Check your Mail", toastoptions)
-            // if(!res.status)toast.error("Some error occured")
+           else if(!res.status)toast.error("Some error occured")
         // Handle form submission logic
         setFormData({
             name: '',
@@ -54,7 +56,11 @@ const EnquiryForm = () => {
             time: 'default',
             category: 'default',
         })
-
+        setTimeout(() => {
+            
+            router.push("/")
+        }, 500);
+        
     };
 
     return (
@@ -134,7 +140,7 @@ const EnquiryForm = () => {
                 <div>
                     <button
                         type="button"
-                        className="w-full py-2 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        className="w-full py-2 lg:mb-5 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                         onClick={handleSubmit}>
                         Submit
                     </button>

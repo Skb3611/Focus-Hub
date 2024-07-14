@@ -1,5 +1,6 @@
 "use client"
 import { FaRegLightbulb } from "react-icons/fa";
+import { FaLongArrowAltRight } from "react-icons/fa";
 import { SiWelcometothejungle } from "react-icons/si";
 
 import React from 'react'
@@ -32,7 +33,7 @@ const about = () => {
       <FaRegLightbulb className='text-5xl' />
       </div>
     </div>
-    <button className="flex mx-auto mt-10 md:mb-10 text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={()=>router.push("/about")} >Read More</button>
+    <button className="flex items-center gap-2 mx-auto mt-10 md:mb-10 text-white bg-indigo-500 border-0 py-2 px-5 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={()=>router.push("/about")} >More About us <FaLongArrowAltRight className="text-2xl" /> </button>
   </div>
 </section>
     </div>

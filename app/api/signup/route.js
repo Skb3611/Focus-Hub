@@ -20,7 +20,7 @@ export async function POST(request) {
                 password: hashPass
             }
             await user.create(User)
-            let token= jwt.sign({username,email},process.env.SECRET,{expiresIn:"2h"})
+            let token= jwt.sign({username,email},process.env.SECRET)
             return NextResponse.json({success:true,token:token,message:"Account created"},{status:200})
         }
         }catch (e) {
