@@ -33,6 +33,7 @@ const page = () => {
                 if(form[key]=="")
                  return toast.error("Fields cannot be empty",toastoptions)
             }
+        }
           else{
           let res= await fetch(ResponseApi,{
             method: "POST",
