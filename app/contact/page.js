@@ -4,10 +4,10 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
-
+import { ResponseApi } from '../api/ApiRoutes';
 const page = () => {
-  const IsUser = useSelector((state) => state.user.value)
-  let router = useRouter()
+    const IsUser = useSelector((state) => state.user.value)
+    let router = useRouter()
     let toastoptions = {
         position: "top-right",
         autoClose: 1000,
@@ -17,37 +17,47 @@ const page = () => {
         draggable: true,
         progress: undefined,
         theme: "dark",
-      };
+    };
     const [form, setform] = useState({
-        name:"",
-        email:"",
-        message:""
+        name: "",
+        email: "",
+        message: ""
     })
-    const handlechange=(e) => {
-      setform({...form,[e.target.name]:e.target.value})
+    const handlechange = (e) => {
+        setform({ ...form, [e.target.name]: e.target.value })
     }
-    const handlesubmit=() => {
-        if(IsUser){
+    const handlesubmit = async() => {
+        if (IsUser) {
             for (const key in form) {
-                if(form[key]=="")
-                 return toast.error("Fields cannot be empty",toastoptions)
-             }
-          toast.success("Your response has been sent",toastoptions)
-         setform({
-            name:"",
-            email:"",
-            message:""
-        })
+                if (form[key] == "")
+                    return toast.error("Fields cannot be empty", toastoptions)
+            }
+            let res=await fetch(ResponseApi,{
+                method:"POST",
+                body: JSON.stringify(form),
+                headers:{
+                    "Content-Type":"application/json"
+                }
+            })
+            res=await res.json()
+            console.log(res)
+            if(res.success)toast.success("Your response has been sent", toastoptions)
+                else toast.error("Some error occured",toastoptions)
+            setform({
+                name: "",
+                email: "",
+                message: ""
+            })
         }
-        else{
-            toast.warning("Login to continue",toastoptions)
+        else {
+            toast.warning("Login to continue", toastoptions)
             setTimeout(() => {
-                
+
                 router.push("/login")
             }, 500);
         }
     }
-    
+
     return (
         <div>
             <section className="text-gray-600 body-font relative">
@@ -117,21 +127,21 @@ const page = () => {
                     </div>
                     <div className=" lg:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0 px-2 rounded-md">
                         <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">Contact Us</h2>
-                
+
                         <div className="relative mb-4">
                             <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-                            <input value={form.name} onChange={(e)=>handlechange(e)} type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input value={form.name} onChange={(e) => handlechange(e)} type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
                         <div className="relative mb-4">
                             <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-                            <input value={form.email} onChange={(e)=>handlechange(e)} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
+                            <input value={form.email} onChange={(e) => handlechange(e)} type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" />
                         </div>
                         <div className="relative mb-4">
                             <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
-                            <textarea value={form.message} onChange={(e)=>handlechange(e)} id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+                            <textarea value={form.message} onChange={(e) => handlechange(e)} id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
                         <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={handlesubmit}>Send</button>
-                   
+
                     </div>
                 </div>
             </section>
