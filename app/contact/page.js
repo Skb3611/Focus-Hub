@@ -33,8 +33,8 @@ const page = () => {
                 if(form[key]=="")
                  return toast.error("Fields cannot be empty",toastoptions)
             }
-        }
-          else{
+        
+          
           let res= await fetch(ResponseApi,{
             method: "POST",
             body: JSON.stringyfy(form) ,
@@ -52,7 +52,7 @@ const page = () => {
             email:"",
             message:""
         })
-        }
+    }
         else{
             toast.warning("Login to continue",toastoptions)
             setTimeout(() => {
