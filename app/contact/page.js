@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
-import { ResponseApi } from '../api/ApiRoutes';
+
 const page = () => {
     const IsUser = useSelector((state) => state.user.value)
     let router = useRouter()
@@ -26,31 +26,21 @@ const page = () => {
     const handlechange = (e) => {
         setform({ ...form, [e.target.name]: e.target.value })
     }
-    const handlesubmit = async() => {
-        if (IsUser) {
+    const handlesubmit=() => {
+        if(IsUser){
             for (const key in form) {
-                if (form[key] == "")
-                    return toast.error("Fields cannot be empty", toastoptions)
-            }
-            let res=await fetch(ResponseApi,{
-                method:"POST",
-                body: JSON.stringify(form),
-                headers:{
-                    "Content-Type":"application/json"
-                }
-            })
-            res=await res.json()
-            console.log(res)
-            if(res.success)toast.success("Your response has been sent", toastoptions)
-                else toast.error("Some error occured",toastoptions)
-            setform({
-                name: "",
-                email: "",
-                message: ""
-            })
+                if(form[key]=="")
+                 return toast.error("Fields cannot be empty",toastoptions)
+             }
+          toast.success("Your response has been sent",toastoptions)
+         setform({
+            name:"",
+            email:"",
+            message:""
+        })
         }
-        else {
-            toast.warning("Login to continue", toastoptions)
+        else{
+            toast.warning("Login to continue",toastoptions)
             setTimeout(() => {
 
                 router.push("/login")
