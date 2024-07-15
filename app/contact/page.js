@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useRouter } from 'next/navigation';
-import {ResponseApi} from '@/app/api/ApiRoutes' 
+
 
 const page = () => {
   const IsUser = useSelector((state) => state.user.value)
@@ -33,19 +33,9 @@ const page = () => {
                 if(form[key]=="")
                  return toast.error("Fields cannot be empty",toastoptions)
             }
-        
-          
-          let res= await fetch(ResponseApi,{
-            method: "POST",
-            body: JSON.stringyfy(form) ,
-            headers:{
-              "Content-Type": "application/json" 
-            }
-          })
-          res = await res.json()
-          if(res.status)
+
             toast.success("Your response has been sent",toastoptions)
-          }
+          
           
          setform({
             name:"",
