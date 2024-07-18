@@ -51,7 +51,7 @@ const Navbar = () => {
   
   return (
     <>
-      <header className="text-gray-600 bg-white shadow-xl body-font sticky z-10 w-full top-0 ">
+      <header className="text-gray-600 bg-white shadow-xl body-font sticky z-30 w-full top-0 ">
         <div className="container mx-auto flex flex-wrap p-4 py-2 lg:py-3 justify-between items-center">
           <div className="flex title-font justify-center font-medium items-center text-gray-900 md:mb-0 cursor-pointer " onClick={()=>router.push("/")}>
             <Image src={logo} height={50} alt='logo' />
@@ -64,6 +64,7 @@ const Navbar = () => {
             {IsUser && <span className='text-lg m-auto font-semibold'>Hi {decoded.username}</span>}
             <Link onClick={handletoggle} href={"/"} className=" hover:text-black hover:underline">Home</Link>
             <Link onClick={handletoggle} href={"/#courses"} className=" hover:text-black hover:underline">Courses</Link>
+            <Link onClick={handletoggle} href={"/#slot"} className=" hover:text-black hover:underline">Book a Slot</Link>
             <Link onClick={handletoggle} href={"/about"} className=" hover:text-black hover:underline">About Us</Link>
             <Link onClick={handletoggle} href={"/contact"} className=" hover:text-black hover:underline">Contact Us</Link>
             <Link onClick={handletoggle} href={"/team"} className=" hover:text-black hover:underline">Developers</Link>
@@ -79,6 +80,7 @@ const Navbar = () => {
           <nav className=" hidden md:ml-auto md:mr-auto lg:flex flex-wrap items-center text-lg font-bold  justify-center">
             <Link href={"/"} className="mr-5 hover:text-black hover:underline hover:scale-105 transition-all">Home</Link>
             <Link href={"/#courses"} className="mr-5 hover:text-black hover:underline hover:scale-105 transition-all">Courses</Link>
+            <Link href={"/#slot"} className="mr-5 hover:text-black hover:underline hover:scale-105 transition-all">Book a Slot</Link>
             <Link href={"/about"} className="mr-5 hover:text-black hover:underline hover:scale-105 transition-all">About Us</Link>
             <Link href={"/contact"} className="mr-5 hover:text-black hover:underline hover:scale-105 transition-all">Contact Us</Link>
             <Link href={"/team"} className=" hover:text-black hover:underline hover:scale-105 transition-all">Developers</Link>

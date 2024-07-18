@@ -24,7 +24,7 @@ export async function POST(request) {
     var mailOptions = {
       from: process.env.EMAIL,
       to: body.email,
-      subject: 'Thanks for ',
+      subject: 'Thanks for your Response ',
       html: emailHtml
           };
 

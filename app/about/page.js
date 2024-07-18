@@ -1,6 +1,6 @@
 import React from 'react'
 import { FaGraduationCap, FaScroll, FaBook, FaLightbulb, FaUsers, FaHandshake, FaTrophy, FaCommentDots, FaPhone } from 'react-icons/fa';
-
+import Link from 'next/link';
 const page = () => {
   let data = [
     {
@@ -45,15 +45,10 @@ const page = () => {
       icon: <FaTrophy className="text-6xl" />,
       position: "left"
     },
-    {
-      title: "Customer Testimonials",
-      desc: "Sarah Johnson: Focus Hub has transformed my learning experience. The supportive environment and dedicated teachers have helped me excel in my studies. David Lee: Thanks to Focus Hub, I was able to achieve my academic goals and secure a place in my dream college. Emily Davis: Focus Hub's innovative programs have prepared me for a successful career. I am grateful for the opportunities and support I've received.",
-      icon: <FaCommentDots className="text-6xl" />,
-      position: "right"
-    },
+    
     {
       title: "Contact Information",
-      desc: <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center" >Visit Contact Us</button>,
+      desc: <Link href={"/contact"} type="button" className=" text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center w-full"  >Visit Contact Us</Link>,
       icon: <FaPhone className="text-6xl" />,
       position: "left"
     },
@@ -75,7 +70,7 @@ const page = () => {
                   </div>
                   <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
                     <h2 className="text-gray-900 text-xl title-font font-medium mb-2">{item.title}</h2>
-                    <p className="leading-relaxed text-lg">{item.desc}</p>
+                    <p className="leading-relaxed text-lg text-justify sm:text-left">{item.desc}</p>
                   </div>
                 </div>
               )
@@ -87,7 +82,7 @@ const page = () => {
                   </div>
                   <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
                     <h2 className="text-gray-900 text-xl title-font font-medium mb-2">{item.title}</h2>
-                    <p className="leading-relaxed text-lg">{item.desc}</p>
+                    <p className="leading-relaxed text-lg text-justify sm:text-left">{item.desc}</p>
                   </div>
                 </div>
               )

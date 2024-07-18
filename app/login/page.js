@@ -65,12 +65,13 @@ useEffect( () => {
             </label>
             <input onChange={(e) => handlechange(e)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" />
           </div>
-          <div className="mb-6">
+          <div>
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
               Password
             </label>
             <input onChange={(e) => handlechange(e)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Password" />
           </div>
+          <Link href={"/forget"} className='block text-right mb-2 text-base cursor-pointer'>Forgot Password?</Link>
           <div className="flex items-center justify-center w-full">
             <button type="submit" className="w-1/2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center">Login</button>
 

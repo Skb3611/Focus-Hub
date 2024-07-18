@@ -20,7 +20,7 @@ const Footer = () => {
     
   </div>
   <div className=' flex justify-center items-center'>
-    <button className="text-white bg-indigo-500 border-0 lg:py-2 py-1 px-4 focus:outline-none hover:bg-indigo-600 rounded text-lg mr-1   sm:mr-5" onClick={()=>router.push("/team")}>Developers</button>
+    <button className="text-white bg-indigo-500 border-0 lg:py-2 py-1 lg:px-4 px-2 focus:outline-none hover:bg-indigo-600 rounded text-lg mr-1   sm:mr-5" onClick={()=>router.push("/team")}>Developers</button>
   </div>
 </footer>
     </div>
