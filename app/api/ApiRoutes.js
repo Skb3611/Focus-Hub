@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-export const host ="http://localhost:3000/"
-=======
-export const host ="https://focus-hub-xi.vercel.app/"
->>>>>>> 844731b38e912366cef3af4639ff82cda5c86174
+
+export const host ="https://focus-hub-xi.vercel.app/
 export const SignupApi=`${host}api/signup`
 export const LoginApi=`${host}api/login`
 export const EnquiryApi=`${host}api/enquiry`
