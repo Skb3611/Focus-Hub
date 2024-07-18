@@ -10,6 +10,8 @@ import { useDispatch } from 'react-redux';
 
 
 const page = () => {
+  const [Isloading, setIsloading] = useState(false)
+
 let dispatch =useDispatch()
 const router=useRouter()
 useEffect( () => {
@@ -36,6 +38,7 @@ useEffect( () => {
     if (form.email.length == 0 || form.password.length == 0)
       toast.error("Fields cannot be empty", toastoptions)
     else {
+      setIsloading(true)
       let res = await fetch(LoginApi, {
         method: "POST",
         body: JSON.stringify(form),
@@ -43,13 +46,15 @@ useEffect( () => {
           "Content-Type": "application/json",
         }
       })
+      setIsloading(false)
       res = await res.json()
+      
       if (!res.success) toast.error(res.message, toastoptions)
-      else {
+        else {
         localStorage.setItem("token", JSON.stringify(res.token))
         toast.success(res.message, toastoptions)
         dispatch(SetUser())
-        setTimeout(() => { router.push("/") }, 1000)
+        setTimeout(() => { router.push("/") }, 700)
       }
     }
   }
@@ -73,7 +78,7 @@ useEffect( () => {
           </div>
           <Link href={"/forget"} className='block text-right mb-2 text-base cursor-pointer'>Forgot Password?</Link>
           <div className="flex items-center justify-center w-full">
-            <button type="submit" className="w-1/2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center">Login</button>
+            <button disabled={Isloading} type="submit" className={`w-1/2 text-white ${Isloading?"bg-gradient-to-br from-purple-500 to-blue-400":"bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl"} focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center`}>Login</button>
 
           </div>
           <div className='text-center mt-2 text-base'>Don't have an account? <Link href={"/signup"} className=' underline' >Sign Up</Link> </div>

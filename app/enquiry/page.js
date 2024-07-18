@@ -5,6 +5,7 @@ import { EnquiryApi } from '../api/ApiRoutes';
 import { useRouter } from 'next/navigation';
 const EnquiryForm = () => {
     const router=useRouter()
+    const [Isloading, setIsloading] = useState(false)
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -37,6 +38,7 @@ const EnquiryForm = () => {
             if (formData[key] == "" || formData[key] == "default")
                 return toast.error("Fields cannot be empty", toastoptions)
         }
+        setIsloading(!Isloading)
         let res = await fetch(EnquiryApi, {
             method: "POST",
             body: JSON.stringify(formData),
@@ -45,9 +47,11 @@ const EnquiryForm = () => {
               }
         })
         res= await res.json()
-        if(res)toast.success("Session booked. Check your Mail", toastoptions)
+        if(res){
+            toast.success("Session booked. Check your Mail", toastoptions)
+            setIsloading(!Isloading)
+        }
            else if(!res.status)toast.error("Some error occured")
-        // Handle form submission logic
         setFormData({
             name: '',
             email: '',
@@ -140,7 +144,8 @@ const EnquiryForm = () => {
                 <div>
                     <button
                         type="button"
-                        className="w-full py-2 lg:mb-5 px-4 bg-indigo-600 text-white font-semibold rounded-md shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                        disabled={Isloading}
+                        className={`w-full py-2 lg:mb-5 px-4  text-white font-semibold rounded-md shadow-md  focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 ${Isloading ? "bg-indigo-400":"bg-indigo-600 hover:bg-indigo-700"} `}
                         onClick={handleSubmit}>
                         Submit
                     </button>

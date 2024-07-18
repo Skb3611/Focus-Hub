@@ -7,6 +7,7 @@ import { useRouter } from 'next/navigation';
 import { ResponseApi } from '../api/ApiRoutes';
 
 const page = () => {
+    const [Isloading, setIsloading] = useState(false)
     const IsUser = useSelector((state) => state.user.value)
     let router = useRouter()
     let toastoptions = {
@@ -27,30 +28,36 @@ const page = () => {
     const handlechange = (e) => {
         setform({ ...form, [e.target.name]: e.target.value })
     }
-    const handlesubmit= async() => {
-        if(IsUser){
+    const handlesubmit = async () => {
+        if (IsUser) {
             for (const key in form) {
-                if(form[key]=="")
-                 return toast.error("Fields cannot be empty",toastoptions)
-             }
-             let res=await fetch(ResponseApi,{
-                method:"POST",
-                body:JSON.stringify(form),
-                headers:{
-                    "Content-Type":"application/json"
+                if (form[key] == "")
+                    return toast.error("Fields cannot be empty", toastoptions)
+            }
+            setIsloading(!Isloading)
+            let res = await fetch(ResponseApi, {
+                method: "POST",
+                body: JSON.stringify(form),
+                headers: {
+                    "Content-Type": "application/json"
                 }
-             })
-             res = await res.json()
-             if(res.success)toast.success("Your response has been sent",toastoptions)
-                else toast.error("Some error occured",toastoptions)
-         setform({
-            name:"",
-            email:"",
-            message:""
-        })
+            })
+
+            res = await res.json()
+            if (res.success) {
+                toast.success("Your response has been sent", toastoptions)
+                setIsloading(false)
+            }
+            else toast.error("Some error occured", toastoptions)
+            setform({
+                name: "",
+                email: "",
+                message: ""
+            })
+
         }
-        else{
-            toast.warning("Login to continue",toastoptions)
+        else {
+            toast.warning("Login to continue", toastoptions)
             setTimeout(() => {
 
                 router.push("/login")
@@ -140,7 +147,7 @@ const page = () => {
                             <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
                             <textarea value={form.message} onChange={(e) => handlechange(e)} id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                         </div>
-                        <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg" onClick={handlesubmit}>Send</button>
+                        <button disabled={Isloading} className={`text-white  border-0 py-2 px-6 focus:outline-none  rounded text-lg ${Isloading ? "bg-indigo-400" : "bg-indigo-600 hover:bg-indigo-700"}`} onClick={handlesubmit}>Send</button>
 
                     </div>
                 </div>

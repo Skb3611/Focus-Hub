@@ -9,6 +9,8 @@ import { SetUser } from '@/app/features/userslice'
 
 
 const page = () => {
+  const [Isloading, setIsloading] = useState(false)
+
   const router = useRouter()
   const dispatch = useDispatch()
   useEffect( () => {
@@ -45,6 +47,7 @@ const page = () => {
       toast.error("Passwords don't match", toastoptions)
 
     else {
+      setIsloading(true)
       let res = await fetch(SignupApi, {
         method: "POST",
         body: JSON.stringify(form),
@@ -53,6 +56,8 @@ const page = () => {
         }
       })
       res = await res.json()
+      setIsloading(false)
+
       if (!res.success) toast.warning(res.message, toastoptions)
       else {
         localStorage.setItem("token", JSON.stringify(res.token))
@@ -94,7 +99,7 @@ const page = () => {
               <input onChange={(e) => handlechange(e)} className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="Confirm-password" type="password" placeholder="Confirm Password" />
             </div>
             <div className="flex items-center justify-center w-full">
-              <button type="submit" className="w-1/2 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center" >Sign Up</button>
+            <button disabled={Isloading} type="submit" className={`w-1/2 text-white ${Isloading?"bg-gradient-to-br from-purple-500 to-blue-400":"bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl"} focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-lg px-5 py-2.5 text-center`}>Sign up</button>
             </div>
             <div className='text-center mt-2 text-base'>Alread have an account? <Link href={"/login"} className=' underline' >Login</Link> </div>
           </form>
