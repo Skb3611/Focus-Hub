@@ -17,6 +17,9 @@ const forget = ({ userName, resetLink }) => (
         <Text style={{ fontSize: '16px', marginBottom: '12px' }}>
           We received a request to reset your password. Click the button below to reset your password:
         </Text>
+        <Text style={{ fontSize: '16px', marginBottom: '12px' }}>
+          NOTE : This Link is valid only for 5 mins. If this doesn't works request for a new one. 
+        </Text>
         <Section style={{ textAlign: 'center', marginTop: '20px', marginBottom: '20px' }}>
           <Button href={resetLink} style={{ backgroundColor: '#0070f3', color: '#ffffff', padding: '10px 20px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px' }}>
             Reset Password
