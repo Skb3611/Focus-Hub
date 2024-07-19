@@ -54,8 +54,8 @@ const page = ({ params }) => {
   }
   return (
     <div>
-      <div className=" h-[80vh] flex items-center justify-center">
-        <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+      <div className=" h-[77vh] md:h-[80vh] flex items-center justify-center ">
+        <div className="max-w-md w-full bg-white px-4 py-8 md:p-8 rounded-lg shadow-md mx-3 md:mx-0">
           <form onSubmit={(e) => handleSubmit(e)}>
             <div className="mb-4">
               <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">

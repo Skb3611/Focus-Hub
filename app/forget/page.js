@@ -25,8 +25,8 @@ const page = () => {
   
 
   return (
-    <div className=" h-[80vh] flex items-center justify-center">
-      <div className="max-w-md w-full bg-white p-8 rounded-lg shadow-md">
+    <div className=" h-[77vh] md:h-[80vh] flex items-center justify-center">
+      <div className="max-w-md w-full bg-white px-4 py-8 md:p-8 rounded-lg shadow-md mx-3 md:mx-0">
         {(submitted ? (
           <div>
             <h2 className="text-2xl font-bold mb-4">Check Your Email</h2>
