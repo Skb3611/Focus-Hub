@@ -1,18 +1,16 @@
+import Link from 'next/link';
 import React from 'react'
 import { FaLongArrowAltRight } from "react-icons/fa";
 const Courses = () => {
     let date = new Date()
+    
     let data = [
         {
             img: "https://img.freepik.com/free-vector/laptop-with-program-code-isometric-icon-software-development-programming-applications-dark-neon_39422-971.jpg?w=900&t=st=1720989815~exp=1720990415~hmac=86cd4ad05296525ca4e5ebdb8efc761ad1d3daa15def914aede637f61f57e45e",
             title: "Coding Courses",
             info: "C, C++, Python, JAVA, JS ,Node JS, Full-Stack Development, etc..."
         },
-        {
-            img: "https://www.accurate.in/img/college/1662113563-mechanical-engineering.jpg",
-            title: "Mechanical Softwares ",
-            info: "CAD, AutoCad, AutoDesk etc... "
-        },
+        
         {
             img: "https://assets.datamation.com/uploads/2023/08/dm08172023-what-is-data-analytics.png",
             title: "Data Analysis & Accounting ",
@@ -22,6 +20,11 @@ const Courses = () => {
             img: "https://learn.g2.com/hubfs/iStock-1191609321%20%281%29.jpg",
             title:"Graphics Design Softwares " ,
             info: "Adobe Illustrator, Adobe Photoshop, MAYA ,Blender"
+        },
+        {
+            img: "https://www.accurate.in/img/college/1662113563-mechanical-engineering.jpg",
+            title: "Mechanical Softwares ",
+            info: "CAD, AutoCad, AutoDesk etc... "
         },
     ]
     return (
@@ -35,17 +38,19 @@ const Courses = () => {
                             {
                                 data.map((item) => {
                                     return (
-                                        <div key={item.title} className="px-2 w-full sm:w-1/2 lg:1/3 xl:w-1/4 cursor-pointer hover:scale-105 transition-all duration-500">
+                                        <>
+                                        <Link href={`courses/${item.title}`} key={item.title} className="px-2 w-full sm:w-1/2 lg:1/3 xl:w-1/4 cursor-pointer hover:scale-105 transition-all duration-500">
                                             <div className="flex flex-wrap w-full bg-gray-800 sm:py-24 py-16 sm:px-10 px-6 relative h-[90%] rounded-lg">
                                                 <img alt="gallery" className="w-full object-fill h-full object-center block opacity-25 absolute inset-0" src={item.img} />
                                                 <div className="text-center relative z-10 w-full">
                                                     <h2 className="text-xl text-white font-medium title-font mb-2">{item.title}</h2>
                                                     <p className="leading-relaxed">{item.info}</p>
-                                                    <a className="mt-3 gap-2 text-red-300 inline-flex items-center"> Read More <FaLongArrowAltRight className="text-2xl" />
-                                                    </a>
+                                                    <p className="mt-3 gap-2 text-red-300 inline-flex items-center"> Read More <FaLongArrowAltRight className="text-2xl" />
+                                                    </p>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </Link>
+                                        </>
                                     )
                                 })
                             }

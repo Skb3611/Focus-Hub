@@ -51,7 +51,7 @@ const Navbar = () => {
   
   return (
     <>
-      <header className="text-gray-600 bg-white shadow-xl body-font sticky z-30 w-full top-0 ">
+      <header className="text-gray-600 bg-white shadow-xl body-font sticky z-50 w-full top-0 ">
         <div className="container mx-auto flex flex-wrap p-4 py-2 lg:py-3 justify-between items-center">
           <div className="flex title-font justify-center font-medium items-center text-gray-900 md:mb-0 cursor-pointer " onClick={()=>router.push("/")}>
             <Image src={logo} height={50} alt='logo' />
