@@ -71,7 +71,7 @@ const page = ({ params }) => {
             {!loading && (
               <TypeAnimation
                 sequence={[
-                  `Learn ${title} with Focus Hub`,
+                  `Learn ${category} with Focus Hub`,
                   1000,
                   "Basic - Advance Courses by Focus Hub",
                   1000,
