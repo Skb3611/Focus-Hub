@@ -45,7 +45,7 @@ const Navbar = () => {
   if (IsUser) {
     let token = JSON.parse(localStorage.getItem("token"))
    decoded = jwt.decode(token)
-
+  //  console.log(decoded)
   }
  
   
