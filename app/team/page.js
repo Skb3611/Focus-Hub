@@ -43,11 +43,11 @@ const page = () => {
     },
   ]
   return (
-    <div className='h-[80vh] overflow-scroll lg:overflow-hidden lg:h-full example'>
+    <div className='h-[74vh] overflow-scroll lg:overflow-hidden lg:h-full example'>
       <div className="flex items-center justify-center  my-12 md:my-20 flex-wrap flex-shrink gap-5">
        {data.map((item)=>{
         return(
-          <div className="w-3/4 sm:w-72 rounded-lg overflow-hidden ring-1 shadow-lg p-6 bg-white hover:scale-105 transition-all duration-500">
+          <div key={Math.random()} className="w-3/4 sm:w-72 rounded-lg overflow-hidden ring-1 shadow-lg p-6 bg-white hover:scale-105 transition-all duration-500">
           <div className="flex items-center justify-center ">
             <Image
               className="w-40  h-40 rounded-full object-cover  ring-2 ring-blue-500 ring-offset-2"
