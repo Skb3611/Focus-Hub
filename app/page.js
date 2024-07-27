@@ -9,6 +9,7 @@ import { host, Paymentsuccess } from "./api/ApiRoutes";
 import jwt from 'jsonwebtoken'
 import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import { Suspense } from "react";
 export default function Home() {
   const router=useRouter()
   let toastoptions = {
@@ -49,11 +50,13 @@ export default function Home() {
 
   
   return (
+    <Suspense fallback={<></>}>
    <div className="scroll-smooth ">
    <Slider/>
    <Slot/>
    <Courses/>
    <About/>
    </div>
+    </Suspense>
   );
 }
