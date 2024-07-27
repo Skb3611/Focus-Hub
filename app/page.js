@@ -50,7 +50,7 @@ export default function Home() {
   }, [searchParams, router]);
 
   return (
-    <Suspense fallback={<div> </div>}>
+    <Suspense fallback={<div>... </div>}>
       <div className="scroll-smooth">
         <Slider />
         <Slot />
