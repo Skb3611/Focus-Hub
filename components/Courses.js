@@ -39,7 +39,7 @@ const Courses = () => {
                                 data.map((item) => {
                                     return (
                                         <>
-                                        <Link href={`courses/${item.title}`} key={item.title} className="px-2 w-full sm:w-1/2 lg:1/3 xl:w-1/4 cursor-pointer hover:scale-105 transition-all duration-500">
+                                        <Link href={`courses/${item.title}`} key={Math.random()} className="px-2 w-full sm:w-1/2 lg:1/3 xl:w-1/4 cursor-pointer hover:scale-105 transition-all duration-500">
                                             <div className="flex flex-wrap w-full bg-gray-800 sm:py-24 py-16 sm:px-10 px-6 relative h-[90%] rounded-lg">
                                                 <img alt="gallery" className="w-full object-fill h-full object-center block opacity-25 absolute inset-0" src={item.img} />
                                                 <div className="text-center relative z-10 w-full">

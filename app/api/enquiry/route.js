@@ -33,7 +33,7 @@ const EmailHtml= render(<Enquiry body={body} />)
     return NextResponse.json({ success: true });
 
   } catch (error) {
-    console.log(error);
+ 
     return NextResponse.json({ success: false, error: error });
   }
 }

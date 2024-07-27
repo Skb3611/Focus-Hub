@@ -6,7 +6,7 @@ import "./globals.css";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ProviderWrapper from "@/components/ProviderWrapper";
-import Script from "next/script";
+
 
 const inter = Baloo_2({ subsets: ["latin"], weight: ["400", "500"] });
 

@@ -11,7 +11,7 @@ export async function POST(request){
         await connectToDatabase()
         let email = await request.json()
         // email=email.slice(1,(email.length-1))
-        // console.log(email)
+      
         let User= await user.findOne(email)
         if(!User)return NextResponse.json({success:false,message:"No credentials found"})
           let token=jwt.sign({id:User._id},process.env.SECRET,{expiresIn: "5m" })
@@ -38,7 +38,7 @@ export async function POST(request){
               let info = await transporter.sendMail(mailOptions);
     return NextResponse.json({success:true,token,id:(User._id)})
     } catch (error) {
-        console.log(error)
+        
         return NextResponse.json({success:false,message:error.message})
     }
 }

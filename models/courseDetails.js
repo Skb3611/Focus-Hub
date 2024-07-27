@@ -7,6 +7,7 @@ const courseDetails=new Schema({
     features:Array,
     Benefits:Array,
     Syllabus:Array,
+    price:String
 })
 mongoose.models={}
 export default mongoose.model("courseDetails",courseDetails)

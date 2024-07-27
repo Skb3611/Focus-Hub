@@ -19,7 +19,7 @@ const page = () => {
         "Content-Type":"application/json"
       }
     })
-    console.log(await res.json())
+   
   };
 
   

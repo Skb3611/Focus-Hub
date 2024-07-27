@@ -6,3 +6,4 @@ export const EnquiryApi=`${host}api/enquiry`
 export const ResponseApi=`${host}api/response`
 export const ForgetPasswordApi=`${host}api/forget`
 export const ResetApi=`${host}api/reset`
+export const Paymentsuccess=`${host}api/paymentsuccess`

@@ -24,7 +24,7 @@ export async function POST(request) {
             return NextResponse.json({success:true,token:token,message:"Account created"},{status:200})
         }
         }catch (e) {
-            console.log(e)
+         
             return NextResponse.json({ message: "Internal server error" }, { status: 500 })
         }
 

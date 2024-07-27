@@ -13,11 +13,7 @@ import { CiBookmarkPlus } from "react-icons/ci";
 import "react-loading-skeleton/dist/skeleton.css";
 import Courselist from "@/skeleton/Courselist";
 import Coursepage from "@/skeleton/Coursepage";
-import Script from "next/script";
-import Razorpay from "razorpay";
-import initiate from "@/actions/paymentaction";
-import { toast } from "react-toastify";
-import jwt from "jsonwebtoken";
+import Payment from "@/components/Payment";
 
 const Page = ({ params }) => {
   const [data, setData] = useState(null);
@@ -73,57 +69,10 @@ const Page = ({ params }) => {
       }
     })();
   }, [params.slug]);
-  let toastoptions = {
-    position: "top-right",
-    autoClose: 1000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "dark",
-  };
-  const pay = async (amount, category, CourseName) => {
-    let token = JSON.parse(localStorage.getItem("token"));
-    if (!token) {
-      return toast.warning("Login to continue", toastoptions);
-    }
-    let decoded = jwt.decode(token);
-    console.log(decoded.username, amount, category, CourseName);
-
-    let res = await initiate(decoded.username, amount, category, CourseName);
-    let key_id = process.env.NEXT_PUBLIC_RAZORPAY_ID;
-    console.log(key_id);
-    const options = {
-      key: "rzp_test_QWD1ozZ7xgCKnN", // Enter the Key ID generated from the Dashboard
-      amount: amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-      currency: "INR",
-      name: "Focus Hub", //your business name
-
-      image: "https://focus-hub-xi.vercel.app/favicon.ico",
-      order_id: res.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      callback_url: "https://eneqd3r9zrjok.x.pipedream.net/",
-      prefill: {
-        //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-        name: decoded.username, //your customer's name
-        email: decoded.email,
-        contact: "", //Provide the customer's phone number for better conversion rates
-      },
-      notes: {
-        address: "Razorpay Corporate Office",
-      },
-      theme: {
-        color: "#3399cc",
-      },
-     
-    };
-    const rzp1 = new window.Razorpay(options);
-    rzp1.open();
-    
-  };
+  
 
   if (loading) {
-    console.log(count);
+
     if (count === 2) return <Coursepage />;
     if (count === 1) return <Courselist />;
     else return <div className="h-screen"></div>;
@@ -214,8 +163,6 @@ const Page = ({ params }) => {
   if (count === 2) {
     return (
       <>
-        <Script src="https://checkout.razorpay.com/v1/checkout.js"></Script>
-
         <section className="w-[90%] m-auto flex flex-col-reverse lg:flex-row">
           <div className="aside lg:w-1/4 w-full lg:h-[80vh] lg:py-20 mb-10 ">
             <h2 className="text-xl text-center font-medium">
@@ -458,12 +405,8 @@ const Page = ({ params }) => {
                       </div>
                     </div>
                     <div className="button flex justify-center">
-                      <button
-                        className="lg:w-1/3 w-[80%] text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
-                        onClick={() => pay("100", category, title)}
-                      >
-                        Buy Course
-                      </button>
+                   
+                      <Payment amt={data.price} category={category} CourseName={course}/>
                     </div>
                   </div>
                 </div>

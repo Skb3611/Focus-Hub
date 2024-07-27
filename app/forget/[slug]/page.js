@@ -25,7 +25,7 @@ const page = ({ params }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (form.password != form.Cpassword) return toast.error("Passwords don't match", toastoptions)
-    // console.log(form)
+  
     let res = await fetch(ResetApi, {
       method: "POST",
       body: JSON.stringify({ ...form, token: params.slug }),
@@ -34,7 +34,7 @@ const page = ({ params }) => {
       }
     })
     res=await res.json()
-    console.log(res)
+ 
     if (!res.success){
       setTimeout(() => {
         router.push('/forget')

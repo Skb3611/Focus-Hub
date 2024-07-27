@@ -17,7 +17,7 @@ const Navbar = () => {
   const [hamburger, setHamburger] = useState(false)
   const handletoggle=() => {
     setHamburger(!hamburger)
-    // console.log(hamburger)
+
   }
   
   let toastoptions = {
@@ -45,7 +45,7 @@ const Navbar = () => {
   if (IsUser) {
     let token = JSON.parse(localStorage.getItem("token"))
    decoded = jwt.decode(token)
-  //  console.log(decoded)
+
   }
  
   

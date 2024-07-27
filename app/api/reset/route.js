@@ -13,7 +13,7 @@ export async function POST(request) {
         if(res){
             
             let id = new mongoose.Types.ObjectId(res.id)
-            console.log(id)
+           
             let User = await user.findById(id)
             if (!User) return NextResponse.json({ success: false, error: "Invalid Details" })
             let saltRounds = 10;
@@ -22,7 +22,7 @@ export async function POST(request) {
             return NextResponse.json({success:true,message:"Password Updated"})
         }
     } catch (error) {
-        // console.log(error)
+        
         return NextResponse.json({ success: false, message: error.message })
     }
 }
