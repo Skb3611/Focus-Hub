@@ -27,7 +27,7 @@ export async function POST(request) {
       { status: true }
     );
     
-    return NextResponse.redirect(`${host}`);
+    return NextResponse.redirect(`${host}?payment=true`);
   } catch (error) {
     return NextResponse.json({
       success: false,
