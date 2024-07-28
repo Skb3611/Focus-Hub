@@ -1,5 +1,4 @@
 "use client";
-
 import Slider from "@/components/Slider";
 import About from "@/components/About";
 import Slot from "@/components/Slot";

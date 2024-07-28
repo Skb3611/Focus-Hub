@@ -16,7 +16,7 @@ export async function POST(request){
         if(!User)return NextResponse.json({success:false,message:"No credentials found"})
           let token=jwt.sign({id:User._id},process.env.SECRET,{expiresIn: "5m" })
         
-          let link=`${host}forget/${token}`
+          let link=`${host}/forget/${token}`
             var transporter = nodemailer.createTransport({
                 service: 'gmail',
                 auth: {

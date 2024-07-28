@@ -26,7 +26,8 @@ export async function POST(request) {
       { oid: body.razorpay_order_id },
       { status: true }
     );
-    return NextResponse.redirect(`${host}?payment=true`);
+    
+    return NextResponse.redirect(`${host}`);
   } catch (error) {
     return NextResponse.json({
       success: false,
