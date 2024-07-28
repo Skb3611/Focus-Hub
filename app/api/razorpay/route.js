@@ -3,19 +3,20 @@ import { NextResponse } from "next/server";
 import { validatePaymentVerification } from "razorpay/dist/utils/razorpay-utils";
 import { host } from "../ApiRoutes";
 import Receipt from "@/template/Receipt";
-import nodemailer from 'nodemailer';
+import nodemailer from 'nodemailer'
 import { render } from '@react-email/components';
 
 export async function POST(request) {
   try {
-    const body = Object.fromEntries(await request.formData());
+    let body = await request.formData();
+    body = Object.fromEntries(body);  
 
-    const paymentRecord = await payment.findOne({ oid: body.razorpay_order_id });
-    if (!paymentRecord) {
+    let p = await payment.findOne({ oid: body.razorpay_order_id });
+    console.log(p)
+    if (!p)
       return NextResponse.json({ success: false, message: "No payment found" });
-    }
 
-    const isVerified = validatePaymentVerification(
+    let verify = validatePaymentVerification(
       {
         order_id: body.razorpay_order_id,
         payment_id: body.razorpay_payment_id,
@@ -23,63 +24,52 @@ export async function POST(request) {
       body.razorpay_signature,
       process.env.RAZORPAY_SECRET
     );
-
-    if (!isVerified) {
+    if (!verify)
       return NextResponse.json({ success: false, message: "Invalid Id's" });
-    }
-
-    const updatedPayment = await payment.findOneAndUpdate(
-      { oid: body.razorpay_order_id },
-      { status: true },
-      { new: true }
+    const updatedpayment = await payment.findOneAndUpdate(
+      { oid: body.razorpay_order_id },      
+      { status: true }
     );
-
-    if (!updatedPayment) {
-      return NextResponse.json({ success: false, message: "Payment update failed" });
-    }
-
-    const latestPayment = await payment.findOne({ email: updatedPayment.email }).sort({ createdAt: -1 });
-
-    if (!latestPayment) {
-      return NextResponse.json({ success: false, message: "No payment data available" });
-    }
-
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL,
-        pass: process.env.PASS // Use the App Password here
-      },
-      tls: {
-        rejectUnauthorized: false
-      }
-    });
-
-    const emailData = {
-      orderId: latestPayment.oid,
-      username: latestPayment.user,
-      id: latestPayment.receipt,
-      amount: latestPayment.amount,
-      status: latestPayment.status,
-      time: latestPayment.updatedAt,
-      courseName: latestPayment.CourseName,
-      courseCategory: latestPayment.category
-    };
-
-    const emailHtml = render(<Receipt receipt={emailData} />);
-
-    const mailOptions = {
-      from: process.env.EMAIL,
-      to: updatedPayment.email,
-      subject: 'Thanks for your Purchase',
-      html: emailHtml
-    };
-
-    await transporter.sendMail(mailOptions);
-
+    let data=await payment.find({email:updatedpayment.email}).sort({ createdAt: -1 })
+    data=data[0]
+   
+    if(!data)return NextResponse({success:false})
+        else{
+        var transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: process.env.EMAIL,
+              pass: process.env.PASS // Use the App Password here
+            },
+            tls: {
+              rejectUnauthorized: false
+            }
+          });
+          let a={
+            orderId:data.oid,
+            username:data.user,
+            id:data.receipt,
+            amount:data.amount,
+            status:data.status,
+            time:data.updatedAt,
+            courseName:data.CourseName,
+            courseCategory:data.category
+          }
+      
+          const emailHtml = render(<Receipt receipt={a}/>);
+  
+          var mailOptions = {
+            from: process.env.EMAIL,
+            to: updatedpayment.email ,
+            subject: 'Thanks for your Purchase ',
+            html: emailHtml
+                };
+      
+          let info = transporter.sendMail(mailOptions);
+              }
     return NextResponse.redirect(`${host}`);
   } catch (error) {
-    console.error(error);
+    console.log(error)
     return NextResponse.json({
       success: false,
       message: error.message,
