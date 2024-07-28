@@ -1,6 +1,5 @@
 import React from 'react';
-import { Html, Head, Preview, Body, Container, Heading, Text, Link, Hr, Section, Img, Button } from '@react-email/components';
-
+import { Html, Head, Preview, Body, Container, Heading, Text, Link, Hr, Section, Img } from '@react-email/components';
 
 const ConfirmationEmail = ({ body }) => (
   <Html>
@@ -18,30 +17,32 @@ const ConfirmationEmail = ({ body }) => (
         <Text style={{ fontSize: '16px', marginBottom: '8px' }}>
           Your appointment has been successfully scheduled. Here are the details of your appointment:
         </Text>
-        <Section style={{ marginBottom: '8px' }}>
+        
+        <Section style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
           <Text style={{ fontSize: '16px', fontWeight: 'bold' }}>Name:</Text>
-          <Text style={{ fontSize: '16px', marginLeft: '20px' }}>{body.name}</Text>
+          <Text style={{ fontSize: '16px' }}>{body.name}</Text>
         </Section>
-        <Section style={{ marginBottom: '8px' }}>
+        <Section style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
           <Text style={{ fontSize: '16px', fontWeight: 'bold' }}>Email:</Text>
-          <Text style={{ fontSize: '16px', marginLeft: '20px' }}>{body.email}</Text>
+          <Text style={{ fontSize: '16px' }}>{body.email}</Text>
         </Section>
-        <Section style={{ marginBottom: '8px' }}>
+        <Section style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
           <Text style={{ fontSize: '16px', fontWeight: 'bold' }}>Phone:</Text>
-          <Text style={{ fontSize: '16px', marginLeft: '20px' }}>{body.phone}</Text>
+          <Text style={{ fontSize: '16px' }}>{body.phone}</Text>
         </Section>
-        <Section style={{ marginBottom: '8px' }}>
+        <Section style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
           <Text style={{ fontSize: '16px', fontWeight: 'bold' }}>Date:</Text>
-          <Text style={{ fontSize: '16px', marginLeft: '20px' }}>{body.date}</Text>
+          <Text style={{ fontSize: '16px' }}>{body.date}</Text>
         </Section>
-        <Section style={{ marginBottom: '8px' }}>
+        <Section style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
           <Text style={{ fontSize: '16px', fontWeight: 'bold' }}>Time:</Text>
-          <Text style={{ fontSize: '16px', marginLeft: '20px' }}>{body.time}</Text>
+          <Text style={{ fontSize: '16px' }}>{body.time}</Text>
         </Section>
-        <Section style={{ marginBottom: '8px' }}>
+        <Section style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
           <Text style={{ fontSize: '16px', fontWeight: 'bold' }}>Category:</Text>
-          <Text style={{ fontSize: '16px', marginLeft: '20px' }}>{body.category}</Text>
+          <Text style={{ fontSize: '16px' }}>{body.category}</Text>
         </Section>
+        
         <Hr style={{ borderColor: '#eaeaea', margin: '20px 0' }} />
         <Text style={{ fontSize: '16px', marginBottom: '8px' }}>Best regards,</Text>
         <Text style={{ fontSize: '16px', fontWeight: 'bold' }}>The Focus Hub Team</Text>
@@ -59,6 +60,5 @@ const ConfirmationEmail = ({ body }) => (
     </Body>
   </Html>
 );
-
 
 export default ConfirmationEmail;

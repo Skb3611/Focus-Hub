@@ -12,7 +12,7 @@ const Response = ({ userName, doubt }) => (
         <Img src="https://focus-hubco.netlify.app/favicon.ico" alt="Focus Hub Logo" style={{ width: '100px', height: 'auto', margin: '0 auto' }} />
       </Section>
       <Heading style={{ color: '#0070f3', fontSize: '24px', marginBottom: '16px', textAlign: 'center' }}>
-        Thank You for Your Submission, {userName}!
+        Thank You for Your Submission
       </Heading>
       <Text style={{ fontSize: '16px', marginBottom: '12px' }}>Dear {userName},</Text>
       <Text style={{ fontSize: '16px', marginBottom: '12px' }}>
