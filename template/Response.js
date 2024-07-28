@@ -30,13 +30,15 @@ const Response = ({ userName, doubt }) => (
       <Hr style={{ borderColor: '#eaeaea', margin: '20px 0' }} />
       <Text style={{ fontSize: '16px', marginBottom: '12px' }}>Best regards,</Text>
       <Text style={{ fontSize: '16px', fontWeight: 'bold' }}>The Focus Hub Team</Text>
-      <Text style={{ fontSize: '14px', color: '#888', marginTop: '20px' }}>
-        If you have any further questions, feel free to <Link href="mailto:info.focus.hub@gmail.com" style={{ color: '#0070f3' }}>contact us</Link>.
-      </Text>
-      <Section style={{ textAlign: 'center', marginTop: '20px' }}>
-          <Button href="https://focus-hub-xi.vercel.app/" style={{ backgroundColor: '#0070f3', color: '#ffffff', padding: '10px 20px', borderRadius: '5px', textDecoration: 'none', fontSize: '16px' }}>
-            Visit Focus Hub
-          </Button>
+      <Section style={{ padding: '20px', textAlign: 'center' }}>
+          <Text style={{ fontSize: '14px', color: '#888' }}>
+            Notice something wrong? <Link href="mailto:info.focus.hub@gmail.com" style={{ color: '#0070f3', textDecoration: 'none' }}>Contact our support team</Link> and we'll be happy to help.
+          </Text>
+        </Section>
+        <Section style={{ padding: '20px', textAlign: 'center', borderTop: '1px solid #eaeaea' }}>
+          <Text style={{ fontSize: '14px', color: '#888' }}>
+            &copy; {(new Date().getFullYear())} Focus Hub. All rights reserved. | <Link href="https://focus-hub-xi.vercel.app/" style={{ color: '#0070f3', textDecoration: 'none' }}>Visit our website</Link>
+          </Text>
         </Section>
     </Container>
   </Body>

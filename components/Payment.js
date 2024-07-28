@@ -4,7 +4,7 @@ import Script from "next/script";
 import initiate from "@/actions/paymentaction";
 import { toast } from "react-toastify";
 import jwt from "jsonwebtoken";
-import { host } from "@/app/api/ApiRoutes";
+import { callback_url, host } from "@/app/api/ApiRoutes";
 import { useRouter } from "next/navigation";
 
 
@@ -41,7 +41,7 @@ const Payment = ({amt, category, CourseName}) => {
       description: "Test Transaction",
       image: "https://focus-hub-xi.vercel.app/favicon.ico",
       order_id: res.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      callback_url: `${host}/api/razorpay`,
+      callback_url: callback_url,
       prefill: {
         name: decoded.username,
         email:decoded.email

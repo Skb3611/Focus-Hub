@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react'
+import { useSearchParams } from 'next/navigation';
 import { FaLongArrowAltRight } from "react-icons/fa";
 const Courses = () => {
     let date = new Date()

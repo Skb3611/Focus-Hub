@@ -55,7 +55,7 @@ const Receipt = ({ receipt }) => (
         </Section>
         <Section style={{ padding: '20px', textAlign: 'center', borderTop: '1px solid #eaeaea' }}>
           <Text style={{ fontSize: '14px', color: '#888' }}>
-            &copy; 2024 Focus Hub. All rights reserved. | <Link href="https://focus-hub-xi.vercel.app/" style={{ color: '#0070f3', textDecoration: 'none' }}>Visit our website</Link>
+            &copy; {(new Date().getFullYear())} Focus Hub. All rights reserved. | <Link href="https://focus-hub-xi.vercel.app/" style={{ color: '#0070f3', textDecoration: 'none' }}>Visit our website</Link>
           </Text>
         </Section>
       </Container>

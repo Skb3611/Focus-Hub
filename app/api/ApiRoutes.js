@@ -7,3 +7,4 @@ export const ResponseApi=`${host}/api/response`
 export const ForgetPasswordApi=`${host}/api/forget`
 export const ResetApi=`${host}/api/reset`
 export const Paymentsuccess=`${host}/api/paymentsuccess`
+export const callback_url=`${host}/api/razorpay`
