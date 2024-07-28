@@ -27,7 +27,7 @@ export default async function initiate(email, user, amt, category, CourseName ) 
     category:category,
     status: false,
   });
-  payment.collection.createIndex({ oid: 1 });
+
 
   return res;
 }
