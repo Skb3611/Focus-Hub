@@ -8,7 +8,7 @@ const Receipt = ({ receipt }) => (
     <Body style={{ fontFamily: 'Arial, sans-serif', color: '#333', backgroundColor: '#f0f0f0', padding: '20px' }}>
       <Container style={{ maxWidth: '600px', margin: '40px auto', padding: '0', backgroundColor: '#ffffff', borderRadius: '8px', boxShadow: '0 0 10px rgba(0,0,0,0.1)' }}>
         <Section style={{ backgroundColor: '#0070f3', padding: '20px', borderRadius: '8px 8px 0 0', textAlign: 'center' }}>
-          <Img src="https://focus-hub-xi.vercel.app/favicon.ico" alt="Focus Hub Logo" style={{ width: '100px', height: 'auto', marginBottom: '10px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
+          <Img src="https://focus-hubco.netlify.app/favicon.ico" alt="Focus Hub Logo" style={{ width: '100px', height: 'auto', marginBottom: '10px', display: 'block', marginLeft: 'auto', marginRight: 'auto' }} />
           <Heading style={{ color: '#ffffff', margin: '0', fontSize: '20px' }}>Thanks for your payment!</Heading>
         </Section>
         <Section style={{ padding: '20px', borderBottom: '1px solid #eaeaea', textAlign: 'center' }}>
@@ -55,7 +55,7 @@ const Receipt = ({ receipt }) => (
         </Section>
         <Section style={{ padding: '20px', textAlign: 'center', borderTop: '1px solid #eaeaea' }}>
           <Text style={{ fontSize: '14px', color: '#888' }}>
-            &copy; {(new Date().getFullYear())} Focus Hub. All rights reserved. | <Link href="https://focus-hub-xi.vercel.app/" style={{ color: '#0070f3', textDecoration: 'none' }}>Visit our website</Link>
+            &copy; {(new Date().getFullYear())} Focus Hub. All rights reserved. | <Link href="https://focus-hubco.netlify.app/" style={{ color: '#0070f3', textDecoration: 'none' }}>Visit our website</Link>
           </Text>
         </Section>
       </Container>
