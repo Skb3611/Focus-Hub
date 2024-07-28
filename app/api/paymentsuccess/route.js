@@ -45,7 +45,7 @@ export  async function POST(request){
             html: emailHtml
                 };
       
-          // let info = await transporter.sendMail(mailOptions);
+          let info = await transporter.sendMail(mailOptions);
       
         return NextResponse.json({success:true,message:"Check Your mail."})
             }
