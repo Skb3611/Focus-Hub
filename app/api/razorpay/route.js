@@ -11,11 +11,10 @@ export async function POST(request) {
  
     const updatedpayment = await payment.findOneAndUpdate(
       { oid: body.razorpay_order_id },
-      { status: true },
-      { new: true }
+      { status: true }
     );
     return NextResponse.redirect(
-      `${host}/courses/${p.category}/${p.CourseName}?payment=true`
+      `${host}/courses/${updatedpayment.category}/${updatedpayment.CourseName}?payment=true`
     );
   } catch (error) {
     console.log(error);
