@@ -1,36 +1,96 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+![Focus Hub Logo](https://focus-hubco.netlify.app/favicon.ico)
+# Focus Hub
 
-## Getting Started
 
-First, run the development server:
+Welcome to **Focus Hub**, a robust educational platform designed to facilitate comprehensive learning. Whether you’re preparing for competitive exams, learning to code, or exploring data analysis, Focus Hub provides a rich environment to support your educational journey.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## About Focus Hub
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Focus Hub is an innovative online education platform aimed at offering diverse courses for students preparing for various competitive exams and acquiring essential skills. Leveraging modern web technologies, it ensures an engaging and supportive learning experience.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- **Competitive Exam Preparation:** Courses for JEE, NEET, and defense exams.
+- **Skill Development:** Coding, data analysis, graphic design, and mechanical software courses.
+- **Supportive Learning Environment:** Structured content and interactive learning tools.
+- **Up-to-date Curriculum:** Relevant courses that align with current educational standards.
 
-## Learn More
+## Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+- **Frontend:**
+  - Next.js
+  - Tailwind CSS
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Backend:**
+  - Node.js
+  - Next.js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Database:**
+  - MongoDB
 
-## Deploy on Vercel
+## Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+To set up the project locally, follow these steps:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Prerequisites
+
+- Node.js (v14 or higher)
+- MongoDB
+
+### Steps
+
+1. **Clone the repository:**
+
+    ```sh
+    git clone https://github.com/Skb3611/Focus-Hub.git
+    cd Focus-Hub
+    ```
+
+2. **Install dependencies:**
+
+    ```sh
+    npm install
+    ```
+
+3. **Configure the environment variables:**
+
+    Create a `.env` file in the root directory and add your MongoDB connection string and any other necessary environment variables:
+
+    ```env
+    MONGO_URI=your_mongodb_connection_string
+    PORT=3000
+    ```
+
+4. **Start the development server:**
+
+    ```sh
+    npm run dev
+    ```
+
+    The application should now be running on `http://localhost:3000`.
+
+## Usage
+
+1. **Sign Up:**
+   Create a new account.
+
+2. **Log In:**
+   Log in with your existing credentials.
+
+3. **Browse Courses:**
+   Explore various courses and select the ones you want to enroll in.
+
+4. **Start Learning:**
+   Access course materials, track your progress, and participate in interactive sessions.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or issues, please open an issue on GitHub or contact us at shubhambhilare4899223@gmail.com
+
+---
+
+Thank you for choosing Focus Hub! We hope it enhances your learning experience.
