@@ -14,6 +14,10 @@ import "react-loading-skeleton/dist/skeleton.css";
 import Courselist from "@/skeleton/Courselist";
 import Coursepage from "@/skeleton/Coursepage";
 import Payment from "@/components/Payment";
+import { useRouter, useSearchParams } from "next/navigation";
+import { Paymentsuccess } from "@/app/api/ApiRoutes";
+import jwt from "jsonwebtoken";
+import { toast } from "react-toastify";
 
 const Page = ({ params }) => {
   const [data, setData] = useState(null);
@@ -23,7 +27,18 @@ const Page = ({ params }) => {
   const [count, setCount] = useState(0);
   const [course, setCourse] = useState("");
   const [list, setList] = useState([]);
-
+  const searchparams = useSearchParams();
+  const router = useRouter();
+  let toastoptions = {
+    position: "top-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+  };
   useEffect(() => {
     (async () => {
       const count = params.slug.length;
@@ -46,6 +61,26 @@ const Page = ({ params }) => {
       }
 
       if (count === 2) {
+        let payment = searchparams.get("payment");
+        if (payment) {
+          let token = localStorage.getItem("token");
+          let decoded = jwt.decode(JSON.parse(token));
+          let res = await fetch(Paymentsuccess, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email: decoded.email }),
+          });
+          let a = await res.json();
+          console.log(a);
+
+          if (a.success){
+         toast.success(a.message, toastoptions);
+         setTimeout(() => {
+          router.push("/")
+         }, 700);
+        }}
         setLoading(true);
         const courses = params.slug[0]
           .replaceAll("%20", " ")
@@ -56,11 +91,12 @@ const Page = ({ params }) => {
           setList(listResponse.courses);
           const decodedTitle = params.slug[1]
             .replaceAll("%20", " ")
-            .replaceAll("%2B", "+");
+            .replaceAll("%2B", "+")
+            .split("?")[0];
+          console.log(decodedTitle);
           setCourse(decodedTitle.split(" ")[0]);
           const dataResponse = await getcourseDetails(decodedTitle);
           setData(dataResponse);
-          
         } catch (error) {
           console.error("Failed to fetch data:", error);
         } finally {
@@ -69,10 +105,8 @@ const Page = ({ params }) => {
       }
     })();
   }, [params.slug]);
-  
 
   if (loading) {
-
     if (count === 2) return <Coursepage />;
     if (count === 1) return <Courselist />;
     else return <div className="h-screen"></div>;
@@ -405,8 +439,11 @@ const Page = ({ params }) => {
                       </div>
                     </div>
                     <div className="button flex justify-center">
-                   
-                      <Payment amt={data.price} category={category} CourseName={course}/>
+                      <Payment
+                        amt={data.price}
+                        category={category}
+                        CourseName={course}
+                      />
                     </div>
                   </div>
                 </div>
