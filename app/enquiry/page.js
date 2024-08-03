@@ -68,7 +68,7 @@ const EnquiryForm = () => {
     };
 
     return (
-        <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md h-full lg:my-10">
+        <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-md h-full sm:mb-10 sm:mt-4 md:my-10">
             <h2 className="text-2xl font-bold mb-4">Book a Study Session</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <div>

@@ -9,6 +9,7 @@ export async function POST(request) {
   try {
     await connectToDatabase()
     let body = await request.json()
+    console.log(body)
     await response.create(body)
     var transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -34,6 +35,7 @@ export async function POST(request) {
     return NextResponse.json({ success: true })
   }
   catch (error) {
+    console.log(error)
     return NextResponse.json({ success: false,error:error.message })
   }
 }

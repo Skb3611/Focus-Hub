@@ -43,7 +43,7 @@ const page = () => {
     },
   ]
   return (
-    <div className='h-[74vh] overflow-scroll lg:overflow-hidden lg:h-full example'>
+    <div className='h-[78vh] overflow-scroll lg:overflow-hidden lg:h-full example'>
       <div className="flex items-center justify-center  my-12 md:my-20 flex-wrap flex-shrink gap-5">
        {data.map((item)=>{
         return(

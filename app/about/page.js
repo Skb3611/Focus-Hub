@@ -58,7 +58,7 @@ const page = () => {
   
   return (
     <div>
-      <section className="text-gray-600 body-font h-[78vh] sm:h-[80vh] overflow-auto example">
+      <section className="text-gray-600 body-font h-[79vh] sm:h-[80vh] overflow-auto example">
         <div className="container px-5 py-10 lg:py-20 mx-auto">
 
           {data.map((item) => {

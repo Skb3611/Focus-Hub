@@ -54,6 +54,8 @@ const page = () => {
                 email: "",
                 message: ""
             })
+            setIsloading(!Isloading)
+
 
         }
         else {
@@ -68,7 +70,7 @@ const page = () => {
     return (
         <div>
             <section className="text-gray-600 body-font relative">
-                <div className="container pt-10 pb-20 md:py-12 lg:py-5 mx-auto flex lg:flex-nowrap flex-wrap">
+                <div className="container pt-10 mb-10  md:py-12 lg:py-5 mx-auto flex lg:flex-nowrap flex-wrap">
                     <div className="lg:w-2/3  w-full rounded-lg overflow-hidden sm:mr-10 px-10 flex flex-col justify-start relative">
                         <div className='flex flex-col gap-2'>
                             <span className='text-3xl mb-2'>GET in Touch</span>
