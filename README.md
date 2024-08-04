@@ -1,7 +1,6 @@
-![Logo](https://focus-hubco.netlify.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.f0663a44.png&w=256&q=75)
+![Logo](https://focus-hubco.netlify.app/favicon.ico)
 
-
-
+# FocusHub  
 Welcome to **Focus Hub**, a robust educational platform designed to facilitate comprehensive learning. Whether you’re preparing for competitive exams, learning to code, or exploring data analysis, Focus Hub provides a rich environment to support your educational journey.
 
 ## About Focus Hub
@@ -38,7 +37,23 @@ skill development to prepare learners for various professional fields.
 
 - **Instant Email service**  
   Nodemailer for Instant and secure email service making easy for user to save the details provided by **FocusHub**.
+
+- **Responsive design**
+    Supports all type of devices.
  
+## Screenshots  
+### Emails
+
+![Doubt Email](https://github.com/user-attachments/assets/a63839be-8fe9-433d-bcb9-69150c3f501d)
+
+![Session Email](https://github.com/user-attachments/assets/6c6bad5a-2673-4191-b979-7d4a17e3c2da)
+
+![Payment email](https://github.com/user-attachments/assets/bdb8c98b-6b94-440f-b0b3-f6198c08702b)
+
+![Reset Password email](https://github.com/user-attachments/assets/692c81e1-8bf6-49a1-a50d-f1094e39520f)
+
+
+
 
 ## Tech Stack
 
