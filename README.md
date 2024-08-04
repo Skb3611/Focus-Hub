@@ -1,32 +1,62 @@
-![Focus Hub Logo](https://focus-hubco.netlify.app/favicon.ico)
-# Focus Hub
+![Logo](https://focus-hubco.netlify.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flogo.f0663a44.png&w=256&q=75)
+
 
 
 Welcome to **Focus Hub**, a robust educational platform designed to facilitate comprehensive learning. Whether you’re preparing for competitive exams, learning to code, or exploring data analysis, Focus Hub provides a rich environment to support your educational journey.
 
 ## About Focus Hub
 
-Focus Hub is an innovative online education platform aimed at offering diverse courses for students preparing for various competitive exams and acquiring essential skills. Leveraging modern web technologies, it ensures an engaging and supportive learning experience.
+**FocusHub** is an educational platform focused on fostering academic excellence,
+personal growth, and professional development. It offers a wide array of
+courses, including preparation for competitive exams like JEE, NEET, and NDA,
+as well as courses in coding, data analysis, graphic design, and mechanical
+software. The platform emphasizes a supportive learning environment to help
+students achieve their full potential and make meaningful contributions to
+society. Additionally, Focus Hub provides resources for self-improvement and
+skill development to prepare learners for various professional fields.
+
 
 ## Features
+- **Login & SignUp**  
+  Easy Login & Signup Functionality  focusing on security using password hashing and JWT token.
 
-- **Competitive Exam Preparation:** Courses for JEE, NEET, and defense exams.
-- **Skill Development:** Coding, data analysis, graphic design, and mechanical software courses.
-- **Supportive Learning Environment:** Structured content and interactive learning tools.
-- **Up-to-date Curriculum:** Relevant courses that align with current educational standards.
+- **Booking offline study sessions**  
+  Booking offline study session just by filling form about your need and receive a confirmation email instantly.
+
+- **Latest Trending courses**  
+  FocusHub provides latest courses under 4 categories i.e., Coding Courses,
+  Data Analysis & Accounting, Graphics Design Software & Mechanical
+  Software’s. Each category has latest courses which can be purchased online.
+  Description of each course is specified with the trending syllabus.
+    
+- **Payment Mode**  
+  Razorpay Payment Gateway Integration used for payment mode.
+  Currently payments are in test mode.
+
+- **Loading Skeletons**  
+  Loading skeletons using npm package react-loading-skeletons for amazing skeletons that provide a better user experience.
+
+- **Instant Email service**  
+  Nodemailer for Instant and secure email service making easy for user to save the details provided by **FocusHub**.
+ 
 
 ## Tech Stack
 
 - **Frontend:**
-  - Next.js
-  - Tailwind CSS
+  - Next.js for overall project
+  - Tailwind CSS for easy designing
 
 - **Backend:**
-  - Node.js
-  - Next.js
+  - Next.js Api's
+  - Next.js Server actions
 
 - **Database:**
-  - MongoDB
+  - MongoDB compass in development mode
+  - MongoDB Atlas in production 
+  - Mongoose for Schemas
+
+- **Deployment:**  
+    Netlify for deployment and monitoring
 
 ## Installation
 
@@ -35,7 +65,7 @@ To set up the project locally, follow these steps:
 ### Prerequisites
 
 - Node.js (v14 or higher)
-- MongoDB
+- MongoDB Compass or Atlas 
 
 ### Steps
 
@@ -54,12 +84,16 @@ To set up the project locally, follow these steps:
 
 3. **Configure the environment variables:**
 
-    Create a `.env` file in the root directory and add your MongoDB connection string and any other necessary environment variables:
 
-    ```env
-    MONGO_URI=your_mongodb_connection_string
-    PORT=3000
-    ```
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`MONGODB_URI` mongodb_connection_string  
+`SECRET` encryption_secret_here  
+`EMAIL` website_email  
+`PASS` application_baised_email_password  
+`NEXT_PUBLIC_RAZORPAY_ID` razorpay_id_from_dashboard  
+`RAZORPAY_SECRET`razorpay_secret_from_dashboard
 
 4. **Start the development server:**
 
@@ -83,9 +117,7 @@ To set up the project locally, follow these steps:
 4. **Start Learning:**
    Access course materials, track your progress, and participate in interactive sessions.
 
-## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 

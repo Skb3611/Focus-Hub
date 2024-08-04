@@ -75,12 +75,13 @@ const Page = ({ params }) => {
           let a = await res.json();
           console.log(a);
 
-          if (a.success){
-         toast.success(a.message, toastoptions);
-         setTimeout(() => {
-          router.push("/")
-         }, 700);
-        }}
+          if (a.success) {
+            toast.success(a.message, toastoptions);
+            setTimeout(() => {
+              router.push("/");
+            }, 700);
+          }
+        }
         setLoading(true);
         const courses = params.slug[0]
           .replaceAll("%20", " ")
