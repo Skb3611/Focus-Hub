@@ -1,6 +1,6 @@
 ![Logo](https://focus-hubco.netlify.app/favicon.ico)
 
-# FocusHub  
+# [FocusHub](https://focus-hubco.netlify.app/)  
 Welcome to **Focus Hub**, a robust educational platform designed to facilitate comprehensive learning. Whether you’re preparing for competitive exams, learning to code, or exploring data analysis, Focus Hub provides a rich environment to support your educational journey.
 
 ## About Focus Hub
