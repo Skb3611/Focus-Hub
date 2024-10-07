@@ -67,7 +67,6 @@ const Navbar = () => {
             <Link onClick={handletoggle} href={"/#slot"} className=" hover:text-black hover:underline">Book a Slot</Link>
             <Link onClick={handletoggle} href={"/about"} className=" hover:text-black hover:underline">About Us</Link>
             <Link onClick={handletoggle} href={"/contact"} className=" hover:text-black hover:underline">Contact Us</Link>
-            <Link onClick={handletoggle} href={"/team"} className=" hover:text-black hover:underline">Developers</Link>
           </nav>
           <div className=" buttons flex gap-2 pb-5 justify-center">
             {!IsUser ? <> <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center w-1/3 " onClick={() => {handletoggle();router.push('/signup')}} >Sign Up</button>
@@ -83,7 +82,7 @@ const Navbar = () => {
             <Link href={"/#slot"} className="mr-5 hover:text-black hover:underline hover:scale-105 transition-all">Book a Slot</Link>
             <Link href={"/about"} className="mr-5 hover:text-black hover:underline hover:scale-105 transition-all">About Us</Link>
             <Link href={"/contact"} className="mr-5 hover:text-black hover:underline hover:scale-105 transition-all">Contact Us</Link>
-            <Link href={"/team"} className=" hover:text-black hover:underline hover:scale-105 transition-all">Developers</Link>
+           
           </nav>
           <div className="hidden buttons lg:flex gap-2">
             {!IsUser ? <> <button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-2 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-base px-5 py-2 text-center" onClick={() =>{ router.push('/signup')}} >Sign Up</button>
