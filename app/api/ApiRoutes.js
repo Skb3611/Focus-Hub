@@ -1,5 +1,5 @@
 
-export const host ="http://localhost:3000"
+export const host ="focus-hubco.netlify.app"
 export const SignupApi=`${host}/api/signup`
 export const LoginApi=`${host}/api/login`
 export const EnquiryApi=`${host}/api/enquiry`
