@@ -9,7 +9,6 @@ export async function POST(request) {
     body = Object.fromEntries(body);
 
     let p = await payment.findOne({ oid: body.razorpay_order_id });
-    console.log(p);
     if (!p)
       return NextResponse.json({ success: false, message: "No payment found" });
 
@@ -32,7 +31,6 @@ export async function POST(request) {
       `${host}/courses/${p.category}/${p.CourseName}?payment=true`
     );
   } catch (error) {
-    console.log(error);
     return NextResponse.json({
       success: false,
       message: error.message,

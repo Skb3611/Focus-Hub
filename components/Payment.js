@@ -7,9 +7,8 @@ import jwt from "jsonwebtoken";
 import { callback_url, host } from "@/app/api/ApiRoutes";
 import { useRouter } from "next/navigation";
 
-
-const Payment = ({amt, category, CourseName}) => {
-  const router=useRouter()
+const Payment = ({ amt, category, CourseName }) => {
+  const router = useRouter();
   let toastoptions = {
     position: "top-right",
     autoClose: 1000,
@@ -20,19 +19,24 @@ const Payment = ({amt, category, CourseName}) => {
     progress: undefined,
     theme: "dark",
   };
- 
 
   const pay = async () => {
     let token = JSON.parse(localStorage.getItem("token"));
-    if (!token){
+    if (!token) {
       setTimeout(() => {
-        router.push("/login")
+        router.push("/login");
       }, 700);
       return toast.warning("Login to continue", toastoptions);
     }
     let decoded = jwt.decode(token);
-   
-    let res = await initiate(decoded.email,decoded.username, amt, category, CourseName);
+
+    let res = await initiate(
+      decoded.email,
+      decoded.username,
+      amt,
+      category,
+      CourseName
+    );
     var options = {
       key: process.env.NEXT_PUBLIC_RAZORPAY_ID, // Enter the Key ID generated from the Dashboard
       amount: amt, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
@@ -44,17 +48,16 @@ const Payment = ({amt, category, CourseName}) => {
       callback_url: callback_url,
       prefill: {
         name: decoded.username,
-        email:decoded.email
+        email: decoded.email,
       },
 
       notes: {
-        CourseCategory:category,
-        CourseName:CourseName
+        CourseCategory: category,
+        CourseName: CourseName,
       },
       theme: {
         color: "#3399cc",
       },
-  
     };
     var rzp1 = new Razorpay(options);
     rzp1.open();
